@@ -15,4 +15,28 @@ p <- seq(0,1,length=100) #za 100 vrednosti med 0 in 1
 y <- p^4*(1-p) #za vsako vrednost izracunam verjetnost
 plot(p,y,type="l") #narisem in povezem s krivuljo
 ```
+Generirajmo vzorec velikosti 500 v katerem ima vsak posameznik verjetnost 0.3, da glasuje za nekega kandidata. Ocenite verjetnost z deležem na vzorcu. Ponovimo poskus 1000x in si poglejmo porazdelitev vzorčnih ocen.
+```{r}
+# 1. nacin
+pon <- 1000
+N = 500
+d <- rbinom(N*pon,size=1,prob=0.3)
+mean(d)
+m <- matrix(d,ncol=pon)
+delezi <- apply(m,2,mean)
+mean(delezi)
+sd(delezi)
+hist(delezi)
+# 2. nacin
+d <- runif(N*pon)
+d[d<=0.3] <- 0
+d[d>0.3] <- 1
+d <- 1-d
+mean(d)
+m <- matrix(d,ncol=pon)
+delezi <- apply(m,2,mean)
+mean(delezi)
+sd(delezi)
+hist(delezi)
+```
 
