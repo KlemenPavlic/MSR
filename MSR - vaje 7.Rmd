@@ -37,6 +37,27 @@ m <- matrix(d,ncol=pon)
 delezi <- apply(m,2,mean)
 mean(delezi)
 sd(delezi)
+var(delezi) #teoreticna 0.3*0.7 / 500
+0.3*0.7/1000
 hist(delezi)
+plot(1:1000,delezi)
+```
+
+Na vsakem ocenjenem vzorcu dodajmo še 95% IZ.
+```{r}
+std_napaka_ocene <- sqrt(delezi *(1-delezi) / 500)
+IZ_sp_meje <- delezi - 1.96 * std_napaka_ocene
+IZ_zg_meje <- delezi + 1.96 * std_napaka_ocene
+count <- 0
+plot(c(1,1000),c(0.3,0.3),type="l",col=2,lwd=5)
+for (i in 1:1000){
+  lines(c(i,i),c(IZ_sp_meje[i],IZ_zg_meje[i]),lwd=0.2)
+  if (IZ_sp_meje[i] <= 0.3){
+    if (IZ_zg_meje[i]>= 0.3){
+      count = count + 1
+    }
+  }
+}
+count / 1000
 ```
 
