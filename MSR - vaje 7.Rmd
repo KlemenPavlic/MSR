@@ -1,0 +1,5 @@
+---
+title: "MSR - vaje 7"
+output: html_document
+---
+
