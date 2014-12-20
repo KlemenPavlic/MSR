@@ -1,5 +1,18 @@
 ---
 title: "MSR - vaje 7"
+author: "Klemen Pavlič"
+date: "20. 12. 2014"
 output: html_document
 ---
+
+**3. Ocenjevanjeparametrov - metoda največjega verjetja**
+
+*3.1 Ocenjevanje deleža - Predlogi za vaje v R-u*
+
+Z R-om narišimo sliko.
+```{r}
+p <- seq(0,1,length=100) #za 100 vrednosti med 0 in 1
+y <- p^4*(1-p) #za vsako vrednost izracunam verjetnost
+plot(p,y,type="l") #narisem in povezem s krivuljo
+```
 
