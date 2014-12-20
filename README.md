@@ -1,0 +1,1 @@
+In this folder I keep some statistical exercises solved with R. The problems were introduced to me at MSR classes.
